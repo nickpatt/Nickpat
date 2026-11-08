@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="8b35d884-303c-4239-9102-9e9deaf115f4" data-domains="nickhilpat.com"></script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -43,8 +44,8 @@
       <div class="intro-side" data-enter>
         <p class="lead">I build products people use and see them through, from the idea to the launch and what comes after. I founded Wydget (100K+ users), shipped checkout flows at Cardlift that lifted conversion by 35%, and open-sourced a tool at Cloudflare that 10K+ developers use. I study computer science at UT&nbsp;Austin.</p>
         <p class="actions">
-          <a class="btn btn-solid" href="mailto:nickhil2006@gmail.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Email me</a>
-          <a class="btn btn-quiet" href="Nickhil-Pattikonda-Resume.pdf"><svg class="ic" aria-hidden="true"><use href="#i-file"/></svg>Download résumé <span class="file">PDF</span></a>
+          <a class="btn btn-solid" href="mailto:nickhil2006@gmail.com" data-umami-event="email-click" data-umami-event-location="hero"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Email me</a>
+          <a class="btn btn-quiet" href="Nickhil-Pattikonda-Resume.pdf" data-umami-event="resume-download" data-umami-event-location="hero"><svg class="ic" aria-hidden="true"><use href="#i-file"/></svg>Download résumé <span class="file">PDF</span></a>
         </p>
       </div>
     </div>
@@ -135,7 +136,7 @@
         <p class="when">May – Aug 2026</p>
       </div>
       <div class="prose">
-        <p>I built and open-sourced <a href="https://github.com/cloudflare/workers-sdk/pull/14633">Local Workers Observability</a> in workers-sdk, a tool more than 10K developers now use. It shows what a Worker did, as a waterfall you can read while developing locally, and exposes the same data over MCP so coding agents can read it too.</p>
+        <p>I built and open-sourced <a href="https://github.com/cloudflare/workers-sdk/pull/14633" data-umami-event="cloudflare-pr-click">Local Workers Observability</a> in workers-sdk, a tool more than 10K developers now use. It shows what a Worker did, as a waterfall you can read while developing locally, and exposes the same data over MCP so coding agents can read it too.</p>
         <ul>
           <li>Re-architected internal C++ ingestion services for log and invocation workloads handling over 1B events a day.</li>
           <li>Fixed a sampling-recovery bug so ingestion recovers on its own after throttling at event rates above 5B.</li>
@@ -165,7 +166,7 @@
       <div class="case-meta">
         <h3 id="cs-h" class="case-h">CodeSession</h3>
         <p class="case-pitch">Code together from a shared link, with an AI agent working in the same files.</p>
-        <p class="case-links"><a href="https://github.com/nickpatt/codesession"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub</a></p>
+        <p class="case-links"><a href="https://github.com/nickpatt/codesession" data-umami-event="project-link" data-umami-event-project="codesession" data-umami-event-type="repo"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub</a></p>
         <p class="stack">TypeScript&nbsp;· React&nbsp;· CodeMirror&nbsp;· Yjs&nbsp;· Node&nbsp;· Go&nbsp;· Docker</p>
       </div>
       <div class="case-body">
@@ -173,7 +174,7 @@
         <img class="shot" src="img/codesession-editor.webp" width="1200" height="500" loading="lazy" decoding="async" alt="CodeSession running locally with two people in one session, Nickhil and a guest. The editor shows main.py with an add function and two tests, the guest’s teal cursor sits at the end of line 10, and the AI Agent panel on the right has the task “Fix the failing tests.” ready to run.">
         <p>The creative part is the agent. Instead of pasting suggestions into a chat, it joins the shared document as one more collaborator: it reads the project, makes its edits where everyone can watch, runs the tests in the sandbox, and keeps iterating until they pass or it runs out of budget.</p>
         <p>I built it in three shippable phases: collaboration first, then sandboxed execution, then the agent. Python runs in locked-down Docker containers with CPU, memory and process limits, a timeout, no network and a read-only filesystem, and the output streams to every client.</p>
-        <figure class="replay" id="replay" aria-labelledby="replay-title" data-src="codesession-replay.json">
+        <figure class="replay" id="replay" data-project="codesession" aria-labelledby="replay-title" data-src="codesession-replay.json">
           <div class="replay-head">
             <p id="replay-title" class="replay-title"><strong>Replay of a recorded agent run</strong> <span class="replay-meta" data-meta>Recorded locally from the CodeSession repo</span></p>
             <div class="replay-controls">
@@ -218,7 +219,7 @@
       <div class="case-meta">
         <h3 id="pe-h" class="case-h">Peerch</h3>
         <p class="case-pitch">A marketplace where UT students sell the skills they already have to each other.</p>
-        <p class="case-links"><a href="https://skillshu.vercel.app"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>Live site</a> <a href="https://github.com/nickpatt/skillshu"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub</a></p>
+        <p class="case-links"><a href="https://skillshu.vercel.app" data-umami-event="project-link" data-umami-event-project="peerch" data-umami-event-type="live"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>Live site</a> <a href="https://github.com/nickpatt/skillshu" data-umami-event="project-link" data-umami-event-project="peerch" data-umami-event-type="repo"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub</a></p>
         <p class="stack">React&nbsp;· TypeScript&nbsp;· Supabase&nbsp;· PostgreSQL&nbsp;· Tailwind&nbsp;· Stripe</p>
       </div>
       <div class="case-body">
@@ -236,14 +237,14 @@
       <div class="case-meta">
         <h3 id="tf-h" class="case-h">TraceForge</h3>
         <p class="case-pitch">Point any OpenTelemetry SDK at it and see where your requests spend their time.</p>
-        <p class="case-links"><a href="https://github.com/nickpatt/traceforge"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub</a></p>
+        <p class="case-links"><a href="https://github.com/nickpatt/traceforge" data-umami-event="project-link" data-umami-event-project="traceforge" data-umami-event-type="repo"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub</a></p>
         <p class="stack">Go&nbsp;· OpenTelemetry&nbsp;· gRPC&nbsp;· Kafka&nbsp;· ClickHouse&nbsp;· Docker</p>
       </div>
       <div class="case-body">
         <p>A tracing platform for engineers debugging services that call each other. Its web UI, served by the query service, lists every service with its p50, p95 and p99 latency, draws the dependency graph between them, and opens any trace as a nested waterfall.</p>
         <img class="shot" src="img/traceforge-ui.webp" width="1440" height="640" loading="lazy" decoding="async" alt="The TraceForge web UI on data from its own load generator. Left: a services table for frontend, auth, db, cache and api with span counts, error rates of about 32% on frontend and db, and p50, p95 and p99 latency bars; below it, a dependency graph where frontend calls api, and api calls auth, cache and db, with the db edge in red. Right: the waterfall of a 2.78 second GET /checkout trace with five nested spans, the db.call span selected and its details shown underneath.">
         <p>Storing every span is expensive, and most of them are boring. TraceForge decides what to keep only after it has seen a whole trace. Spans go through Kafka keyed by trace ID, so one sampler sees every span of a trace even when they arrive out of order. It keeps every slow or failed trace and drops the rest.</p>
-        <figure class="replay tfr" id="tf-replay" aria-labelledby="tfr-title" data-src="traceforge-replay.json">
+        <figure class="replay tfr" id="tf-replay" data-project="traceforge" aria-labelledby="tfr-title" data-src="traceforge-replay.json">
           <div class="replay-head">
             <p id="tfr-title" class="replay-title"><strong>Replay of the sampler on a recorded run</strong> <span class="replay-meta" data-meta>Recorded locally from the TraceForge repo</span></p>
             <div class="replay-controls">
@@ -283,9 +284,9 @@
 
     <h3 class="minor-h">Smaller things</h3>
     <ul class="minor">
-      <li><a href="https://github.com/nickpatt/AIReaderProject">AIReaderProject</a>: paste messy business requirements and get a structured app spec (entities, roles, permissions, workflows) as JSON, plus a review with a quality score and clarifying questions. Next.js and OpenAI structured outputs.</li>
-      <li><a href="https://github.com/nickpatt/TamuhacksDion">TamuhacksDion</a>: a college events app built at TAMUhack 2025 with React and Firebase.</li>
-      <li><a href="https://github.com/nickpatt/financeSheetAutomator">financeSheetAutomator</a>: a Python tool that turns a company’s Excel project and finance sheets into daily invoicing summaries and keeps its quarterly year-to-date sheets current.</li>
+      <li><a href="https://github.com/nickpatt/AIReaderProject" data-umami-event="project-link" data-umami-event-project="aireaderproject" data-umami-event-type="repo">AIReaderProject</a>: paste messy business requirements and get a structured app spec (entities, roles, permissions, workflows) as JSON, plus a review with a quality score and clarifying questions. Next.js and OpenAI structured outputs.</li>
+      <li><a href="https://github.com/nickpatt/TamuhacksDion" data-umami-event="project-link" data-umami-event-project="tamuhacksdion" data-umami-event-type="repo">TamuhacksDion</a>: a college events app built at TAMUhack 2025 with React and Firebase.</li>
+      <li><a href="https://github.com/nickpatt/financeSheetAutomator" data-umami-event="project-link" data-umami-event-project="financesheetautomator" data-umami-event-type="repo">financeSheetAutomator</a>: a Python tool that turns a company’s Excel project and finance sheets into daily invoicing summaries and keeps its quarterly year-to-date sheets current.</li>
     </ul>
 
     <h3 class="minor-h" id="skills">Tools I use</h3>
@@ -302,11 +303,11 @@
   <div class="wrap">
     <h2 id="contact-h">Get in touch</h2>
     <p>Email is the fastest way to reach me.</p>
-    <a class="email" href="mailto:nickhil2006@gmail.com">nickhil2006@gmail.com</a>
+    <a class="email" href="mailto:nickhil2006@gmail.com" data-umami-event="email-click" data-umami-event-location="contact">nickhil2006@gmail.com</a>
     <ul class="links">
-      <li><a href="https://www.linkedin.com/in/nickhilpat"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a></li>
-      <li><a href="https://github.com/nickpatt"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a></li>
-      <li><a href="Nickhil-Pattikonda-Resume.pdf"><svg class="ic" aria-hidden="true"><use href="#i-file"/></svg>Résumé (PDF)</a></li>
+      <li><a href="https://www.linkedin.com/in/nickhilpat" data-umami-event="linkedin-click" data-umami-event-location="contact"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a></li>
+      <li><a href="https://github.com/nickpatt" data-umami-event="github-click" data-umami-event-location="contact"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a></li>
+      <li><a href="Nickhil-Pattikonda-Resume.pdf" data-umami-event="resume-download" data-umami-event-location="contact"><svg class="ic" aria-hidden="true"><use href="#i-file"/></svg>Résumé (PDF)</a></li>
     </ul>
   </div>
 </footer>

@@ -126,7 +126,10 @@
     playLabel.textContent = on ? 'Pause' : (pos >= total && total ? 'Replay' : 'Play');
     playBtn.setAttribute('aria-label', on ? 'Pause replay' : 'Play replay');
     cancelAnimationFrame(raf);
-    if (on) { picked = -1; last = performance.now(); raf = requestAnimationFrame(tick); }
+    if (on) {
+      // Analytics: count starts only (this button also pauses). No-op when Umami is absent.
+      try { window.umami?.track('replay-play', { project: root.dataset.project }); } catch {}
+      picked = -1; last = performance.now(); raf = requestAnimationFrame(tick); }
   }
   function tick(now) {
     pos = Math.min(total, pos + (now - last));
