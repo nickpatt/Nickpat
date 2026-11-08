@@ -1,0 +1,84 @@
+{
+ "recordedAt": "2026-11-08T18:55:49.021Z",
+ "model": "CodeSession’s built-in mock model, not an LLM",
+ "source": "github.com/nickpatt/codesession, run locally: session-server, Go execution-service (Docker), agent-server",
+ "realDurationMs": 598,
+ "files": {
+  "src/calc.py": "def add(a, b):\n    return a - b\n",
+  "tests/test_calc.py": "import sys\nsys.path.insert(0, 'src')\nfrom calc import add\n\n\ndef test_add():\n    assert add(2, 3) == 5\n"
+ },
+ "steps": [
+  {
+   "kind": "run",
+   "t": 0,
+   "label": "pytest, before the agent starts",
+   "output": [
+    "F",
+    "                                                                        [100%]",
+    "\n=================================== FAILURES ===================================\n___________________________________ test_add ___________________________________\n\n",
+    "    def test_add():\n>       assert add(2, 3) == 5\nE       assert -1 == 5\nE        +  where -1 = add(2, 3)\n\ntests/test_calc.py:7: AssertionError\n",
+    "=========================== short test summary info ============================\nFAILED tests/test_calc.py::test_add - assert -1 == 5\n1 failed in 0.01s\n"
+   ],
+   "exitCode": 1
+  },
+  {
+   "kind": "prompt",
+   "t": 78,
+   "label": "Task: “Fix the failing test”"
+  },
+  {
+   "kind": "read",
+   "t": 84,
+   "label": "Read tests/test_calc.py and src/calc.py"
+  },
+  {
+   "kind": "think",
+   "t": 84,
+   "iteration": 1,
+   "modelMs": 1,
+   "label": "Asked the mock model for its next step (edit file)"
+  },
+  {
+   "kind": "edit",
+   "t": 85,
+   "path": "src/calc.py",
+   "before": "def add(a, b):\n    return a - b\n",
+   "after": "def add(a, b):\n    return a + b\n",
+   "delta": [
+    {
+     "retain": 15
+    },
+    {
+     "delete": 16
+    },
+    {
+     "insert": "    return a + b"
+    }
+   ],
+   "line": 2,
+   "label": "Edited src/calc.py, line 2"
+  },
+  {
+   "kind": "run",
+   "t": 597,
+   "label": "pytest in the sandbox, after the edit",
+   "output": [
+    ".",
+    "                                                                        [100%]",
+    "\n",
+    "1 passed in 0.00s\n"
+   ],
+   "exitCode": 0
+  },
+  {
+   "kind": "done",
+   "t": 598,
+   "label": "All tests passing.",
+   "iterations": 1
+  }
+ ],
+ "trimmed": {
+  "status_events": 4,
+  "output_chunks_merged": 3
+ }
+}
