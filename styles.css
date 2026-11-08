@@ -334,6 +334,49 @@ h3 { font-size: 1.3125rem; font-weight: 600; line-height: 1.25; letter-spacing: 
 /* Real product screenshots: the product's own pixels on a hairline, no fake chrome. */
 .shot { display: block; width: 100%; height: auto; margin: 22px 0; border-radius: 10px; outline: 1px solid var(--rule); outline-offset: -1px; background: var(--surface); }
 
+/* TraceForge sampler replay: same panel and controls as the CodeSession replay. */
+.tfr .rp-editor, .tfr .rp-term { display: flex; flex-direction: column; }
+.tfr-count { font: 400 0.75rem/1.4 var(--mono); color: var(--ink-2); }
+.tfr-list { position: relative; list-style: none; margin: 0; padding: 6px; height: 16.5rem; overflow-y: auto; }
+.tfr-idle { padding: 12px; margin: 0; }
+.tfr-list:has(li:not([hidden])) + .tfr-idle { display: none; }
+.tfr-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; align-items: center;
+  width: 100%; min-height: 44px; padding: 6px 8px; border: 0; border-radius: 8px; background: transparent;
+  color: var(--ink); text-align: left; cursor: pointer; font: inherit; transition: background-color 140ms ease;
+}
+.tfr-list li:not([hidden]) .tfr-row { animation: rp-fade 160ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .tfr-row:hover { background: var(--surface); } }
+.tfr-row[aria-pressed="true"] { background: var(--surface); }
+.tfr-route { font-size: 0.8125rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tfr-ms { font: 400 0.75rem/1.4 var(--mono); color: var(--ink-2); text-align: right; }
+.tfr-bar { height: 6px; border-radius: 3px; background: var(--surface); overflow: hidden; }
+.tfr-bar i { display: block; height: 100%; border-radius: 3px; background: var(--ink-2); opacity: 0.45; transition: background-color 200ms ease, opacity 200ms ease; }
+.tfr-dec { font: 500 0.6875rem/1.4 var(--mono); color: var(--ink-2); text-align: right; white-space: nowrap; transition: color 200ms ease; }
+.tfr-row.is-decided[data-reason="dropped"] .tfr-route, .tfr-row.is-decided[data-reason="dropped"] .tfr-ms { color: var(--ink-2); }
+.tfr-row.is-decided:not([data-reason="dropped"]) .tfr-dec { color: var(--ok); }
+.tfr-row.is-decided[data-reason="error"] .tfr-dec { color: var(--bad); }
+.tfr-row.is-decided:not([data-reason="dropped"]) .tfr-bar i { opacity: 1; background: var(--ok); }
+.tfr-row.is-decided[data-reason="error"] .tfr-bar i { background: var(--bad); }
+.rp-chip[data-state="drop"] { background: var(--surface); color: var(--ink-2); }
+
+.tfr-wf { padding: 10px 12px 12px; min-height: 16.5rem; max-height: 26rem; overflow-y: auto; }
+.tfr-wf-pane .rp-tab > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.tfr-spans { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.tfr-span { display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 1fr); align-items: center; gap: 8px; min-height: 26px; }
+.tfr-sl { display: flex; align-items: center; gap: 6px; padding-left: calc(min(var(--d), 5) * 10px); font-size: 0.75rem; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tfr-sl i { width: 8px; height: 8px; border-radius: 2px; background: var(--c); flex: none; }
+.tfr-svc { color: var(--ink-2); }
+.tfr-sl b { font: 600 0.625rem/1 var(--sans); color: var(--bad); background: color-mix(in srgb, var(--bad) 14%, transparent); padding: 2px 4px; border-radius: 3px; }
+.tfr-track { position: relative; height: 26px; background-image: linear-gradient(to right, var(--rule) 1px, transparent 1px); background-size: 25% 100%; }
+.tfr-sb { position: absolute; top: 8px; height: 10px; min-width: 2px; border-radius: 3px; background: var(--c); }
+.tfr-span.is-err .tfr-sb { background: var(--bad); }
+.tfr-sd.is-in { color: #fff; font-weight: 500; top: 7px; line-height: 12px; text-shadow: 0 0 2px rgb(0 0 0 / 0.35); }
+.tfr-sd { position: absolute; top: 6px; font: 400 0.6875rem/1.3 var(--mono); color: var(--ink-2); white-space: nowrap; }
+.tfr-wf .tfr-spans { animation: rp-fade 160ms var(--ease-out); }
+.tfr-why { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--rule); font-size: 0.8125rem; line-height: 1.45; color: var(--ink); }
+.tfr-run { margin: 12px 0 0; font-size: 0.8125rem; line-height: 1.5; color: var(--ink-2); }
+
 /* Flow: how a project fits together, read as a track with a dot per stage.
    Vertical on phones, a row once there is room. */
 .flow { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }

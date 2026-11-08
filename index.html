@@ -243,6 +243,28 @@
         <p>A tracing platform for engineers debugging services that call each other. Its web UI, served by the query service, lists every service with its p50, p95 and p99 latency, draws the dependency graph between them, and opens any trace as a nested waterfall.</p>
         <img class="shot" src="img/traceforge-ui.webp" width="1440" height="640" loading="lazy" decoding="async" alt="The TraceForge web UI on data from its own load generator. Left: a services table for frontend, auth, db, cache and api with span counts, error rates of about 32% on frontend and db, and p50, p95 and p99 latency bars; below it, a dependency graph where frontend calls api, and api calls auth, cache and db, with the db edge in red. Right: the waterfall of a 2.78 second GET /checkout trace with five nested spans, the db.call span selected and its details shown underneath.">
         <p>Storing every span is expensive, and most of them are boring. TraceForge decides what to keep only after it has seen a whole trace. Spans go through Kafka keyed by trace ID, so one sampler sees every span of a trace even when they arrive out of order. It keeps every slow or failed trace and drops the rest.</p>
+        <figure class="replay tfr" id="tf-replay" aria-labelledby="tfr-title" data-src="traceforge-replay.json">
+          <div class="replay-head">
+            <p id="tfr-title" class="replay-title"><strong>Replay of the sampler on a recorded run</strong> <span class="replay-meta" data-meta>Recorded locally from the TraceForge repo</span></p>
+            <div class="replay-controls">
+              <button type="button" class="rp-btn rp-play" data-play aria-label="Play replay"><svg viewBox="0 0 16 16" aria-hidden="true"><path class="i-play" d="M5 3.5v9l7-4.5z"/><path class="i-pause" d="M4.5 3.5h2.5v9H4.5zM9 3.5h2.5v9H9z"/></svg><span data-play-label>Play</span></button>
+              <button type="button" class="rp-btn rp-icon" data-restart aria-label="Restart replay"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3a5 5 0 1 1-4.6 3.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M2.6 2.6v3.7h3.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <input type="range" class="rp-scrub" data-scrub min="0" max="1000" step="1" value="0" aria-label="Replay position" aria-valuetext="Not started">
+            </div>
+          </div>
+          <div class="replay-panes">
+            <div class="rp-editor tfr-in">
+              <div class="rp-tab"><span>Traces arriving</span><span class="tfr-count" data-count aria-hidden="true"></span></div>
+              <ol class="tfr-list" data-list aria-label="Traces in the recorded run, with the sampler's decision"></ol>
+              <p class="rp-idle tfr-idle" data-idle>Press play to watch traces arrive and the sampler keep or drop each one, or pick a trace once it appears.</p>
+            </div>
+            <div class="rp-term tfr-wf-pane">
+              <div class="rp-tab"><span data-wf-title>Waterfall</span><span class="rp-chip" data-chip hidden></span></div>
+              <div class="tfr-wf" data-wf aria-live="polite"></div>
+            </div>
+          </div>
+          <p class="tfr-run" data-run></p>
+        </figure>
         <ol class="flow" aria-label="How TraceForge fits together">
           <li><b>Collector</b><span>OTLP over gRPC and HTTP</span></li>
           <li><b>Kafka</b><span>keyed by trace ID</span></li>
@@ -291,5 +313,6 @@
 
 <script src="main.js" defer></script>
 <script src="replay.js" defer></script>
+<script src="traceforge-replay.js" defer></script>
 </body>
 </html>
